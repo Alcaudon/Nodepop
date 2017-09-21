@@ -1,0 +1,29 @@
+ [{
+         "nombre": "Bicicleta",
+         "venta": true,
+         "precio": 230.15,
+         "foto": "bici.jpg",
+         "tags": ["lifestyle", "motor"]
+     },
+     {
+         "nombre": "iPhone 3GS",
+         "venta": false,
+         "precio": 50.00,
+         "foto": "iphone.png",
+         "tags": ["lifestyle", "mobile"]
+     },
+     {
+        "nombre": "Ferrari F40",
+        "venta": true,
+        "precio": 1111130,
+        "foto": "ferrari.jpg",
+        "tags": ["lifestyle", "motor"]
+    },
+    {
+        "nombre": "Samsung Galaxy S6",
+        "venta": false,
+        "precio": 250.00,
+        "foto": "samsung.png",
+        "tags": ["lifestyle", "mobile"]
+    }
+ ]
