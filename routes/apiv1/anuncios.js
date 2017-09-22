@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-
+const customError = require('../../models/CustomError');
 const Anuncio = require('../../models/Anuncio');
 
 // GET /
@@ -40,7 +40,7 @@ router.get('/:id', (req, res, next) => {
   const _id = req.params.id;
   Anuncio.findOne({ _id: _id }, (err, anuncio) => {
     if (err) {
-      console.log('Error', err);
+      err.message=customError.errorMessage('findOne','es');
       next(err); // para que retorne la página de error
       return;
     }
