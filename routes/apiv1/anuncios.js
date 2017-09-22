@@ -11,6 +11,7 @@ router.get('/', (req, res, next) => {
 
   const nombre = req.query.nombre;
   const venta = req.query.venta;
+  const start = req.query.start;
   const skip = parseInt(req.query.skip);
   const limit = parseInt(req.query.limit);
 

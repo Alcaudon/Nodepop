@@ -8,9 +8,11 @@ const Anuncio = require('../models/Anuncio');
 
 //Ruta donde mostrara los anuncios
 router.get('/', (req, res, next) => {
-
-   Anuncio.lista( (err, list) => {
-        console.log(list);
+   const start=parseInt(req.query.start);
+   const limit=parseInt(req.query.limit);
+   delete req.query.start
+   delete req.query.limit
+   Anuncio.lista(req.query,start,limit, (err, list) => {
         if (err) {
             next(err);
             return;
