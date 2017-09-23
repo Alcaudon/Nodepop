@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <ul>
-      <% for(var i=0; i<list.length; i++) {%>
-         <li><%= list[i].nombre %></li>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title>NODEPOP</title>
+</head>
+
+<body>
+  <div class="container">
+    <% for(var i=0; i<list.length; i++) {%>
+      <article class="article">
+          <div class="title-article">              
+              <img src=<%= list[i].foto %> class="image-article">
+              <div class="title-article">
+                <%= list[i].nombre %>
+              </div>
+              <div class="tipo-article">
+                <%= list[i].venta %>
+              </div>
+              <div class="title-article">
+                <%= list[i].precio %>
+              </div>
+              <div class="tipo-article">
+                <%= list[i].tags %>
+              </div>
+          </div>
+      </article>
       <% } %>
-      </ul>
-  </body>
+  </div>
+</body>
+
 </html>

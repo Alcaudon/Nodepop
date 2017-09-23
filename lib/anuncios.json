@@ -2,84 +2,84 @@
          "nombre": "Bicicleta",
          "venta": true,
          "precio": 230.15,
-         "foto": "/img/bicicleta.png",
+         "foto": "/images/anuncios/bicicleta.png",
          "tags": ["lifestyle", "motor"]
      },
      {
          "nombre": "iPhone 6",
          "venta": false,
          "precio": 650.00,
-         "foto": "/img/iphone.jpg",
+         "foto": "/images/anuncios/iphone6.jpg",
          "tags": ["lifestyle", "mobile"]
      },
      {
          "nombre": "Ferrari F40",
          "venta": true,
          "precio": 250000.00,
-         "foto": "/img/ferrari.jpg",
+         "foto": "/images/anuncios/ferrari.jpg",
          "tags": ["lifestyle", "motor"]
      },
      {
          "nombre": "Samsung Galaxy S6",
          "venta": false,
          "precio": 250.00,
-         "foto": "/img/galaxy.jpg",
+         "foto": "/images/anuncios/galaxy.jpg",
          "tags": ["lifestyle", "mobile"]
      },
      {
          "nombre": "Moto",
          "venta": true,
          "precio": 800.75,
-         "foto": "/img/moto.jpg",
+         "foto": "/images/anuncios/moto.jpg",
          "tags": ["motor"]
      },
      {
          "nombre": "iPad",
          "venta": false,
          "precio": 400.00,
-         "foto": "/img/ipad.jpg",
+         "foto": "/images/anuncios/ipad.jpg",
          "tags": ["mobile"]
      },
      {
          "nombre": "Monitor",
          "venta": true,
          "precio": 50.00,
-         "foto": "/img/monitor.png",
+         "foto": "/images/anuncios/monitor.png",
          "tags": ["lifestyle", "work"]
      },
      {
          "nombre": "Ratón",
          "venta": false,
          "precio": 5.00,
-         "foto": "/img/raton.png",
+         "foto": "/images/anuncios/raton.png",
          "tags": ["work"]
      },
      {
          "nombre": "Triciclo rojo",
          "venta": true,
          "precio": 20.75,
-         "foto": "/img/triciclo.jpg",
+         "foto": "/images/anuncios/triciclo.jpg",
          "tags": ["motor"]
      },
      {
          "nombre": "Nexux 5X",
          "venta": false,
          "precio": 300.00,
-         "foto": "/img/nexus.jpg",
+         "foto": "/images/anuncios/nexus.jpg",
          "tags": ["mobile"]
      },
      {
          "nombre": "Pluma Motnblanc",
          "venta": true,
          "precio": 800.00,
-         "foto": "/img/pluma.jpg",
+         "foto": "/images/anuncios/pluma.jpg",
          "tags": ["lifestyle", "work"]
      },
      {
          "nombre": "Alfombrilla",
          "venta": false,
          "precio": 15.30,
-         "foto": "/img/alfombrilla.jpg",
+         "foto": "/images/anuncios/alfombrilla.jpg",
          "tags": ["lifestyle"]
      }
  ]
