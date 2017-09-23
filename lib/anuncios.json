@@ -81,5 +81,12 @@
          "precio": 15.30,
          "foto": "/images/anuncios/alfombrilla.jpg",
          "tags": ["lifestyle"]
-     }
+     },
+     {
+        "nombre": "Lampara",
+        "venta": true,
+        "precio": 100,
+        "foto": "/images/anuncios/lampara.jpg",
+        "tags": ["lifestyle", "work"]
+    }
  ]
