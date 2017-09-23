@@ -4,11 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+global.i18n = require("i18n");
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var current_locale = i18n.getLocale();
+ 
+i18n.configure({
+  locales:['en', 'es'],
+  directory: __dirname + '/locales',
+  defaultLocale: 'es',
+  cookie: 'lang'
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

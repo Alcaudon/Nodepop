@@ -40,7 +40,7 @@ router.get('/:id', (req, res, next) => {
   const _id = req.params.id;
   Anuncio.findOne({ _id: _id }, (err, anuncio) => {
     if (err) {
-      err.message=customError.errorMessage('findOne','es');
+      err.message=customError.errorMessage('findOne');
       next(err); // para que retorne la página de error
       return;
     }
