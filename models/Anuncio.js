@@ -18,11 +18,12 @@ const anuncioSchema = mongoose.Schema({
 });
 
 anuncioSchema.statics.lista = function( filter, skip, limit, callback) {
-    console.log(filter)  
-    const query = Anuncio.find(filter);
 
-    query.skip(skip);
-    query.limit(limit);
+  console.log(filter)
+  const query = Anuncio.find(filter);
+
+  query.skip(skip);
+  query.limit(limit);
   
     return query.exec(callback); // ejecutamos la consulta
   };

@@ -4,23 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-global.i18n = require("i18n");
 var index = require('./routes/index');
 var users = require('./routes/users');
-const customError = require('./models/CustomError');
-
+const i18n = require("i18n");
 var app = express();
 
 var current_locale = i18n.getLocale();
-//var current_locale = 'es';
 
 i18n.configure({
-  locales:['en', 'es'],
-  directory: __dirname + '/locales',
-  defaultLocale:  current_locale,
-  cookie: 'lang',
-  queryParameter: 'lang'
-});
+    locales:['en', 'es'],
+    defaultLocale:  'es',
+    directory: __dirname + '/locales',
+    queryParameter: 'lang',
+    autoReload: true,
+    syncFiles: true,
+    register: global,
+}); 
 
 
 // view engine setup
@@ -47,7 +46,7 @@ app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error( customError.errorMessage('not_found'));
+  var err = new Error(__('not_found'));
   err.status = 404;
   next(err);
 });
@@ -67,7 +66,7 @@ app.use(function(err, req, res, next) {
   
     // si es una petición al API respondo JSON...
     if (isAPI(req)) {
-      res.json({ success: false, error: err.message });
+      res.json({ success: false, error:__('find_no_one') });
       return;
     }
   

@@ -2,35 +2,29 @@
 
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 
-const customError = require('../../models/CustomError');
 const Anuncio = require('../../models/Anuncio');
 
 // GET /
 router.get('/', (req, res, next) => {
 
-  const nombre = req.query.nombre;
-  const venta = req.query.venta;
-  const start = req.query.start;
+  const filter = crearFiltos(req);
+
+
   const skip = parseInt(req.query.skip);
   const limit = parseInt(req.query.limit);
 
-  const filter = {};
-
-  if (nombre) {
-    filter.nombre = nombre;
-  }
-
-  if (venta) {
-    filter.venta = venta;
-  }
-
-  Anuncio.lista(filter, skip, limit).then( lista => {
-    res.json({ success: true, rows: lista });
-  }).catch( err => {
-    err.message=customError.errorMessage('list_error');
+  
+  Anuncio.lista(filter, skip, limit).then(lista => {
+    res.json({
+      success: true,
+      rows: lista
+    });
+  }).catch(err => {
+    err.message =  __('list_error');
     console.log('Error', err);
-    next(err); 
+    next(err);
     return;
   });
 });
@@ -39,29 +33,37 @@ router.get('/', (req, res, next) => {
 // Recupera un solo documento
 router.get('/:id', (req, res, next) => {
   const _id = req.params.id;
-  Anuncio.findOne({ _id: _id }, (err, anuncio) => {
+  Anuncio.findOne({
+    _id: _id
+  }, (err, anuncio) => {
     if (err) {
-      err.message=customError.errorMessage('find_no_one');
+      err.message = __('find_no_one');
       next(err); // para que retorne la página de error
       return;
     }
-    res.json({ success: true, row: anuncio});
+    res.json({
+      success: true,
+      row: anuncio
+    });
   })
 });
 
 // POST / 
 router.post('/', (req, res, next) => {
   console.log(req.body);
-  
+
   const anuncio = new Anuncio(req.body);
 
   anuncio.save((err, anuncioGuardado) => {
     if (err) {
-      err.message=customError.errorMessage('post_error');
+      err.message = __('post_error');
       next(err); // para que retorne la página de error
       return;
     }
-    res.json({ success: true, result: anuncioGuardado});
+    res.json({
+      success: true,
+      result: anuncioGuardado
+    });
   });
 });
 
@@ -69,27 +71,77 @@ router.post('/', (req, res, next) => {
 router.put('/:clavedelanuncio', (req, res, next) => {
   const _id = req.params.clavedelanuncio;
 
-  Anuncio.findOneAndUpdate({_id: _id}, req.body, {new: true}, (err, anuncioActualizado) => {
+  Anuncio.findOneAndUpdate({
+    _id: _id
+  }, req.body, {
+    new: true
+  }, (err, anuncioActualizado) => {
     if (err) {
-      err.message=customError.errorMessage('error_find_One_And_Update');
-      next(err); 
+      err.message =  __('error_find_One_And_Update');
+      next(err);
       return;
     }
-    res.json({ success: true, result: anuncioActualizado});    
+    res.json({
+      success: true,
+      result: anuncioActualizado
+    });
   });
 });
 
 //DELETE
 router.delete('/:id', (req, res, next) => {
   const _id = req.params.id;
-  Anuncio.remove({ _id: _id }, (err) => {
+  Anuncio.remove({
+    _id: _id
+  }, (err) => {
     if (err) {
-      err.message=customError.errorMessage('delete');
-      next(err); 
+      err.message =  __('delete');
+      next(err);
       return;
     }
-    res.json({ success: true });
+    res.json({
+      success: true
+    });
   })
 });
+
+function crearFiltros(req) {
+  const tags = req.query.tags;
+  const venta = req.query.venta;
+  const precio = req.query.precio;
+  const nombre = req.query.nombre;
+
+  let filtro = {};
+
+  if (nombre) {
+    filtro.nombre = new RegExp('^' + nombre, 'i');
+  }
+
+  if (venta) {
+    filtro.venta = venta;
+  }
+  
+  if (tags) {
+    filtro.tags = tags;
+  }
+ 
+  if (precio) {
+      if (precio.indexOf('-') >= 0) {
+          const range = precio.split('-');
+          const pmin = parseInt(range[0]);
+          filtro.precio = {};
+          if (pmin) {
+            filtro.precio.$gte = pmin;
+          }
+          const pmax = parseInt(range[1]);
+          if (pmax) {
+            filtro.precio.$lte = pmax;
+          }
+      } else {
+        filtro.precio = parseInt(precio);
+      }
+  }
+  return filtro;
+}
 
 module.exports = router;
