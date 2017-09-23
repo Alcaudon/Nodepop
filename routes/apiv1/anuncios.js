@@ -28,6 +28,7 @@ router.get('/', (req, res, next) => {
   Anuncio.lista(filter, skip, limit).then( lista => {
     res.json({ success: true, rows: lista });
   }).catch( err => {
+    err.message=customError.errorMessage('list_error');
     console.log('Error', err);
     next(err); 
     return;
@@ -40,7 +41,7 @@ router.get('/:id', (req, res, next) => {
   const _id = req.params.id;
   Anuncio.findOne({ _id: _id }, (err, anuncio) => {
     if (err) {
-      err.message=customError.errorMessage('findOne');
+      err.message=customError.errorMessage('find_no_one');
       next(err); // para que retorne la página de error
       return;
     }
@@ -56,7 +57,7 @@ router.post('/', (req, res, next) => {
 
   anuncio.save((err, anuncioGuardado) => {
     if (err) {
-      console.log('Error', err);
+      err.message=customError.errorMessage('post_error');
       next(err); // para que retorne la página de error
       return;
     }
@@ -70,7 +71,7 @@ router.put('/:clavedelanuncio', (req, res, next) => {
 
   Anuncio.findOneAndUpdate({_id: _id}, req.body, {new: true}, (err, anuncioActualizado) => {
     if (err) {
-      console.log('Error', err);
+      err.message=customError.errorMessage('error_find_One_And_Update');
       next(err); 
       return;
     }
@@ -83,7 +84,7 @@ router.delete('/:id', (req, res, next) => {
   const _id = req.params.id;
   Anuncio.remove({ _id: _id }, (err) => {
     if (err) {
-      console.log('Error', err);
+      err.message=customError.errorMessage('delete');
       next(err); 
       return;
     }

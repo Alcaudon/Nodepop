@@ -7,16 +7,21 @@ var bodyParser = require('body-parser');
 global.i18n = require("i18n");
 var index = require('./routes/index');
 var users = require('./routes/users');
+const customError = require('./models/CustomError');
 
 var app = express();
+
 var current_locale = i18n.getLocale();
- 
+//var current_locale = 'es';
+
 i18n.configure({
   locales:['en', 'es'],
   directory: __dirname + '/locales',
-  defaultLocale: 'es',
-  cookie: 'lang'
+  defaultLocale:  current_locale,
+  cookie: 'lang',
+  queryParameter: 'lang'
 });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,9 +43,11 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error( customError.errorMessage('not_found'));
   err.status = 404;
   next(err);
 });
