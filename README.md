@@ -1,29 +1,51 @@
 Inicio de trabajo con el proyecto.
 
-Instalamos las dependencias
+-   Instalamos las dependencias
 
-    npm install
+**npm install**
 
-Generamos los datos de la base de datos
+-   Generamos los datos de la base de datos
 
-    npm run installDB
+**npm run installDB**
 
-        Adenda Mongo DB.-
+-   Pondremos en marcha el servidor.
 
-        Para arrancar MongoDB escribimos:
+>   Si tenemos instalado nodemon : **nodemon**
 
-            bin/mongod --dbpath ./data/db --directoryperdb
+>   Sino**: npm start**
 
-        Y para conectarnos con el cliente desde la consola escribimos:
+*Adenda Mongo DB.*
 
-            bin/mongo
+*Para arrancar MongoDB escribimos:*
 
+*bin/mongod --dbpath ./data/db --directoryperdb*
 
-El sistema de plantillas utilizado para el proyecto es EJS. 
+*Y para conectarnos con el cliente desde la consola escribimos:*
 
-Los archivos estátocos los servimos en:
+*bin/mongo*
 
-Imágenes.- /images/anuncios/
-CSS.-/stylesheets
+Notas del proyecto.
 
-Hemos utilizado la librería i18n para la internacionalización de mensajes en idiomas español e ingles. Anque de momento solo lo utilizaremos para los mensajes de error.
+El sistema de plantillas utilizado para el proyecto es **EJS**.
+
+Los archivos estáticos los servimos en:
+
+Imágenes.- **/images/anuncios/**
+
+CSS.- **/stylesheets**
+
+Hemos utilizado la librería **i18n** para la internacionalización de mensajes en
+idiomas español e inglés. Anqué de momento solo lo utilizaremos para los
+mensajes de error.
+
+La ruta para trabajar con el API es:
+
+<http://localhost:3000/apiv1/anuncios>
+
+Para que el Api nos devuelva los tags permitidos:
+
+*http://localhost:3000/apiv1/tags*
+
+También podemos probar los datos en la WEB con:
+
+*http://localhost:3000*
