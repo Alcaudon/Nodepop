@@ -5,9 +5,9 @@
 	"post_error": "Error saving the advertisement.",
 	"error_find_One_And_Update": "Error updating the advertisement.",
 	"delete": "Error deleting the advertisement",
-	"error_nombre":"The advertisement must have a title.",
-	"error_venta":"The advertisement must have a type.",
-	"error_precio":"The advertisement must have a price.",
-	"error_foto":"The advertisement must have a photo.",
-	"`{tag}` error_tag": "`{tag}` must be within the permitted"
+	"error_nombre": "The advertisement must have a title.",
+	"error_precio": "The advertisement must have a price.",
+	"error_foto": "The advertisement must have a photo.",
+	"error_tag": "`{tag}` must be within the permitted",
+	"error_tags": "error_tags"
 }

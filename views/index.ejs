@@ -13,26 +13,28 @@
   <div class="container">
     <% for(var i=0; i<list.length; i++) {%>
       <article class="article">
-          <div class="anuncio">              
-              <img src=<%= list[i].foto %> class="image-article">
-              <div class="title-article">
-                <h1><%= list[i].nombre %></h1>
-              </div>
-              
-              <div class="tipo-article">
-                <% if(list[i].venta){ %>
-                  <h3>VENTA</h3>
-                <% } else{ %>  
-                  <h3>BUSQUEDA</h3>
-                <% } %>
-              </div>
-              <div class="precio-article">
-                <%= list[i].precio %>
-              </div>
-              <div class="tags-article">
-                <%= list[i].tags %>
-              </div>
+        <div class="anuncio">
+          <img src=<%=l ist[i].foto %> class="image-article">
+          <div class="title-article">
+            <h1>
+              <%= list[i].nombre %>
+            </h1>
           </div>
+
+          <div class="tipo-article">
+            <% if(list[i].venta){ %>
+              <h3>VENTA</h3>
+              <% } else{ %>
+                <h3>BUSQUEDA</h3>
+                <% } %>
+          </div>
+          <div class="precio-article">
+            <%= list[i].precio %>
+          </div>
+          <div class="tags-article">
+            <%= list[i].tags %>
+          </div>
+        </div>
       </article>
       <% } %>
   </div>

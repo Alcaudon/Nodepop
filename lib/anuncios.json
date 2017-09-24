@@ -83,10 +83,10 @@
          "tags": ["lifestyle"]
      },
      {
-        "nombre": "Lampara",
-        "venta": true,
-        "precio": 100,
-        "foto": "/images/anuncios/lampara.jpg",
-        "tags": ["lifestyle", "work"]
-    }
+         "nombre": "Lampara",
+         "venta": true,
+         "precio": 100,
+         "foto": "/images/anuncios/lampara.jpg",
+         "tags": ["lifestyle", "work"]
+     }
  ]

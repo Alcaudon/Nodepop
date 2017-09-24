@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const Anuncio = require('../../models/Anuncio');
 
-// GET /
+// GET / REcuperamos la llista de anuncios
 router.get('/', (req, res, next) => {
 
   Anuncio.lista(req).then(lista => {
@@ -41,7 +41,7 @@ router.get('/:id', (req, res, next) => {
   })
 });
 
-// POST / 
+// POST / Añadimos un anuncio
 router.post('/', (req, res, next) => {
   console.log(req.body);
 
@@ -59,7 +59,7 @@ router.post('/', (req, res, next) => {
   });
 });
 
-// PUT /
+// PUT / Modificamos un anuncio
 router.put('/:clavedelanuncio', (req, res, next) => {
   const _id = req.params.clavedelanuncio;
 
@@ -80,7 +80,7 @@ router.put('/:clavedelanuncio', (req, res, next) => {
   });
 });
 
-//DELETE
+//DELETE Borramos un anuncio.
 router.delete('/:id', (req, res, next) => {
   const _id = req.params.id;
   Anuncio.remove({

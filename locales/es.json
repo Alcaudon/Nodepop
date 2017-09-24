@@ -5,9 +5,8 @@
 	"post_error": "Error al guardar el artículo.",
 	"error_find_One_And_Update": "Error al actualizar el artículo.",
 	"delete": "Error al borrar el artículo.",
-	"error_nombre":"El anuncio debe tener un titulo.",
-	"error_venta":"El anuncio debe tener un tipo.",
-	"error_precio":"El anuncio debe tener un precio y ser mayor de 0.",
-	"error_foto":"El anuncio debe tener una foto.",
-	"`{tag}` error_tag": "`{tag}` tiene que estar dentro de los permitidos"
+	"error_nombre": "El anuncio debe tener un titulo.",
+	"error_precio": "El anuncio debe tener un precio y ser mayor de 0.",
+	"error_foto": "El anuncio debe tener una foto.",
+	"error_tags": "El tag tiene que estar dentro de los permitidos"
 }

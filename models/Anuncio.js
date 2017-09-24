@@ -1,47 +1,45 @@
 "use strict";
 const mongoose = require('mongoose');
 
-// definir un esquema
+// DEfinimos el esquema de los anuncios.
 const anuncioSchema = mongoose.Schema({
   nombre: {
     type: String,
     index: true,
-    //required: [true, 'El anuncio debe tener un titulo']
     required: [true, __('error_nombre')]
   },
   venta: {
     type: Boolean,
     index: true,
-    required: [true, 'El anuncio debe tener un tipo']
-    //required: [true, __('error_venta')]
   },
   precio: {
     type: Number,
     index: true,
     required: true,
-    min: [1, 'El anuncio debe tener un precio y ser mayor de 0'],
+    min: [1, __('error_precio')],
   },
   foto: {
     type: String,
     index: true,
-    required: [true, 'El anuncio debe tener una imagen']
-    //required: [true, __('error_foto')]
+    required: [true, __('error_foto')]
   },
   tags: [{
     type: String,
     index: true,
     enum: {
-        values: ['work', 'lifestyle', 'mobile', 'motor'],
-        message:'El tag tiene que estar dentro de los permitidos'
-        //message: __('error_tags')
+      values: ['work', 'lifestyle', 'mobile', 'motor'],
+      message: __('error_tags')
     }
-    
-}]
+
+  }]
 });
 
+//Función estática que nos permitirá realizar las condiciones de filtrado de los anuncios y la paginación.
 anuncioSchema.statics.lista = function (req, callback) {
+  //Preparamos la paginación
   const skip = parseInt(req.query.skip);
   const limit = parseInt(req.query.limit);
+  //Preparamos el filtado de anuncios
   const filtro = crearFiltro(req);
 
   const query = Anuncio.find(filtro);

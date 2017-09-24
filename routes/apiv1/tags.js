@@ -4,6 +4,7 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const Anuncio = require('../../models/Anuncio');
 
+//Ruta donde seviremos la lista de tags permitidos.
 router.get('/', (req, res, next) => {
     res.json({
         tags: Anuncio.schema.path('tags.0').enumValues
