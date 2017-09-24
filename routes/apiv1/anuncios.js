@@ -9,46 +9,7 @@ const Anuncio = require('../../models/Anuncio');
 // GET /
 router.get('/', (req, res, next) => {
 
-  const nombre = req.query.nombre;
-  const venta = req.query.venta;
-  const tags = req.query.tags;
-  const precio = req.query.precio;
-  const skip = parseInt(req.query.skip);
-  const limit = parseInt(req.query.limit);
-
-  let filtro = {};
-
-  if (nombre) {
-    filtro.nombre = new RegExp('^' + nombre, 'i');
-  }
-
-  if (venta) {
-    filtro.venta = venta;
-  }
-
-  if (tags) {
-    filtro.tags = tags;
-  }
-
-  if (precio) {
-    
-    if (precio.indexOf('-') >= 0) {
-        const range = precio.split('-');
-        const pmin = parseInt(range[0]);
-        filtro.precio = {};
-        if (pmin) {
-          filtro.precio.$gte = pmin;
-        }
-        const pmax = parseInt(range[1]);
-        if (pmax) {
-          filtro.precio.$lte = pmax;
-        }
-    } else {
-      filtro.precio = parseInt(precio);
-    }
-}
-
-  Anuncio.lista(filtro, skip, limit).then(lista => {
+  Anuncio.lista(req).then(lista => {
     res.json({
       success: true,
       rows: lista

@@ -5,11 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
-var users = require('./routes/users');
 const i18n = require("i18n");
 var app = express();
-
-var current_locale = i18n.getLocale();
 
 i18n.configure({
     locales:['en', 'es'],
@@ -36,10 +33,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(i18n.init); 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 
