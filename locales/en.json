@@ -1,8 +1,13 @@
 {
-	"find_no_one": "No records were found with this ID",
+	"find_no_one": "No advertisement were found with this ID",
 	"not_found": "Page not found",
 	"list_error": "Error displaying the list",
-	"post_error": "Error saving the item.",
-	"error_find_One_And_Update": "Error updating the item.",
-	"delete": "Error deleting the item"
+	"post_error": "Error saving the advertisement.",
+	"error_find_One_And_Update": "Error updating the advertisement.",
+	"delete": "Error deleting the advertisement",
+	"error_nombre":"The advertisement must have a title.",
+	"error_venta":"The advertisement must have a type.",
+	"error_precio":"The advertisement must have a price.",
+	"error_foto":"The advertisement must have a photo.",
+	"`{tag}` error_tag": "`{tag}` must be within the permitted"
 }

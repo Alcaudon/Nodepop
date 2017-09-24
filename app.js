@@ -5,9 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
-const i18n = require("i18n");
 var app = express();
-
+const i18n = require("i18n");
 i18n.configure({
     locales:['en', 'es'],
     defaultLocale:  'es',
@@ -38,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+app.use('/apiv1/tags', require('./routes/apiv1/tags'));
 
 
 
@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
   
     // si es una petición al API respondo JSON...
     if (isAPI(req)) {
-      res.json({ success: false, error:__('find_no_one') });
+      res.json({ success: false, error: err.message });
       return;
     }
   

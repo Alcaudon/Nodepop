@@ -49,7 +49,6 @@ router.post('/', (req, res, next) => {
 
   anuncio.save((err, anuncioGuardado) => {
     if (err) {
-      err.message = __('post_error');
       next(err); // para que retorne la página de error
       return;
     }
