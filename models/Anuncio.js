@@ -6,8 +6,8 @@ const anuncioSchema = mongoose.Schema({
   nombre: {
     type: String,
     index: true,
-    required: [true, 'El anuncio debe tener un titulo']
-    //required: [true, __('error_nombre')]
+    //required: [true, 'El anuncio debe tener un titulo']
+    required: [true, __('error_nombre')]
   },
   venta: {
     type: Boolean,
