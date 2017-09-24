@@ -1,8 +1,8 @@
 {
 	"find_no_one": "No records were found with this ID",
 	"not_found": "Page not found",
-	"list_error":"Error displaying the list",
-	"post_error":"Error saving the item.",
-	"error_find_One_And_Update":"Error updating the item.",
-	"delete":"Error deleting the item"
+	"list_error": "Error displaying the list",
+	"post_error": "Error saving the item.",
+	"error_find_One_And_Update": "Error updating the item.",
+	"delete": "Error deleting the item"
 }
