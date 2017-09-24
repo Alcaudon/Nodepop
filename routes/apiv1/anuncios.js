@@ -9,20 +9,52 @@ const Anuncio = require('../../models/Anuncio');
 // GET /
 router.get('/', (req, res, next) => {
 
-  const filter = crearFiltos(req);
-
-
+  const nombre = req.query.nombre;
+  const venta = req.query.venta;
+  const tags = req.query.tags;
+  const precio = req.query.precio;
   const skip = parseInt(req.query.skip);
   const limit = parseInt(req.query.limit);
 
-  
-  Anuncio.lista(filter, skip, limit).then(lista => {
+  let filtro = {};
+
+  if (nombre) {
+    filtro.nombre = new RegExp('^' + nombre, 'i');
+  }
+
+  if (venta) {
+    filtro.venta = venta;
+  }
+
+  if (tags) {
+    filtro.tags = tags;
+  }
+
+  if (precio) {
+    
+    if (precio.indexOf('-') >= 0) {
+        const range = precio.split('-');
+        const pmin = parseInt(range[0]);
+        filtro.precio = {};
+        if (pmin) {
+          filtro.precio.$gte = pmin;
+        }
+        const pmax = parseInt(range[1]);
+        if (pmax) {
+          filtro.precio.$lte = pmax;
+        }
+    } else {
+      filtro.precio = parseInt(precio);
+    }
+}
+
+  Anuncio.lista(filtro, skip, limit).then(lista => {
     res.json({
       success: true,
       rows: lista
     });
   }).catch(err => {
-    err.message =  __('list_error');
+    err.message = __('list_error');
     console.log('Error', err);
     next(err);
     return;
@@ -77,7 +109,7 @@ router.put('/:clavedelanuncio', (req, res, next) => {
     new: true
   }, (err, anuncioActualizado) => {
     if (err) {
-      err.message =  __('error_find_One_And_Update');
+      err.message = __('error_find_One_And_Update');
       next(err);
       return;
     }
@@ -95,7 +127,7 @@ router.delete('/:id', (req, res, next) => {
     _id: _id
   }, (err) => {
     if (err) {
-      err.message =  __('delete');
+      err.message = __('delete');
       next(err);
       return;
     }
@@ -104,44 +136,5 @@ router.delete('/:id', (req, res, next) => {
     });
   })
 });
-
-function crearFiltros(req) {
-  const tags = req.query.tags;
-  const venta = req.query.venta;
-  const precio = req.query.precio;
-  const nombre = req.query.nombre;
-
-  let filtro = {};
-
-  if (nombre) {
-    filtro.nombre = new RegExp('^' + nombre, 'i');
-  }
-
-  if (venta) {
-    filtro.venta = venta;
-  }
-  
-  if (tags) {
-    filtro.tags = tags;
-  }
- 
-  if (precio) {
-      if (precio.indexOf('-') >= 0) {
-          const range = precio.split('-');
-          const pmin = parseInt(range[0]);
-          filtro.precio = {};
-          if (pmin) {
-            filtro.precio.$gte = pmin;
-          }
-          const pmax = parseInt(range[1]);
-          if (pmax) {
-            filtro.precio.$lte = pmax;
-          }
-      } else {
-        filtro.precio = parseInt(precio);
-      }
-  }
-  return filtro;
-}
 
 module.exports = router;
