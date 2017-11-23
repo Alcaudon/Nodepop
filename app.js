@@ -38,7 +38,7 @@ app.use(cookieParser());
 app.use(i18n.init);
 //Realizamos el servicio de archivos estáticos. 
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use('/images/anuncios', express.static('public/images'));
+app.use('/images', express.static('public/images'));
 app.use('/stylesheets', express.static('public/stylesheets'));
 app.use('/', index);
 //Rutas del API
