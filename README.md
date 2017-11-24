@@ -8,44 +8,15 @@ Inicio de trabajo con el proyecto.
 
 **npm run installDB**
 
--   Pondremos en marcha el servidor.
+*Adenda Conexión a la página WEB*
 
->   Si tenemos instalado nodemon : **nodemon**
+La practica se encuentra desplegada en el servidor:
 
->   Sino**: npm start**
+Public DNS (IPv4)
+ec2-52-56-170-23.eu-west-2.compute.amazonaws.com
 
-*Adenda Mongo DB.*
+IPv4 Public IP
+52.56.170.23
 
-*Para arrancar MongoDB escribimos:*
+En la Public DNS enlaceremos con la aplicación de Node (Nodepop). Si por el contrario usamos la IP del servidor, accederemos a nuestra web estática.
 
-*bin/mongod --dbpath ./data/db --directoryperdb*
-
-*Y para conectarnos con el cliente desde la consola escribimos:*
-
-*bin/mongo*
-
-Notas del proyecto.
-
-El sistema de plantillas utilizado para el proyecto es **EJS**.
-
-Los archivos estáticos los servimos en:
-
-Imágenes.- **/images/anuncios/**
-
-CSS.- **/stylesheets**
-
-Hemos utilizado la librería **i18n** para la internacionalización de mensajes en
-idiomas español e inglés. Anqué de momento solo lo utilizaremos para los
-mensajes de error.
-
-La ruta para trabajar con el API es:
-
-<http://localhost:3000/apiv1/anuncios>
-
-Para que el Api nos devuelva los tags permitidos:
-
-*http://localhost:3000/apiv1/tags*
-
-También podemos probar los datos en la WEB con:
-
-*http://localhost:3000*
